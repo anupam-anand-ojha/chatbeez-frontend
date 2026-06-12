@@ -1,55 +1,75 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import api from "../services/api";
 
 const Chat = () => {
   const { userId } = useParams();
+  const location = useLocation();
+
+  const username =
+    location.state?.username || "User";
 
   const [messages, setMessages] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
   const [text, setText] = useState("");
 
-  useEffect(() => { fetchMessages(); }, [userId]);
+  useEffect(() => {
+    getProfile();
+    getMessages();
+  }, [userId]);
 
-  const fetchMessages = async () => {
+  const getProfile = async () => {
     try {
-      const res = await api.get( `/messages/${userId}`);
-      setMessages(res.data);
-
-    } 
-    catch (error) {
+      const res = await api.get("/user/profile");
+      setCurrentUser(res.data);
+    } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSend = async (e) => {
+  const getMessages = async () => {
+    try {
+      const res = await api.get(
+        `/messages/${userId}`
+      );
+
+      setMessages(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sendMessage = async (e) => {
     e.preventDefault();
 
     if (!text.trim()) return;
 
     try {
-      const res = await api.post("/messages/send",
+      const res = await api.post(
+        "/messages/send",
         {
           receiver: userId,
           text,
         }
       );
 
-      setMessages((prev) => [...prev, res.data, ]);
-      setText("");
+      setMessages((prev) => [
+        ...prev,
+        res.data,
+      ]);
 
-    } 
-    
-    catch (error) {
+      setText("");
+    } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-gray-100">
 
-      <div className="border-b p-4">
+      <div className="bg-white border-b p-4 shadow">
         <h1 className="text-xl font-bold">
-          Chat
+          {username}
         </h1>
       </div>
 
@@ -58,17 +78,23 @@ const Chat = () => {
         {messages.map((msg) => (
           <div
             key={msg._id}
-            className="border rounded p-2 mb-2"
+            className={`flex mb-3 ${
+              msg.sender === currentUser?._id
+                ? "justify-end"
+                : "justify-start"
+            }`}
           >
-            {msg.text}
+            <div className="bg-white border rounded-lg px-4 py-2 max-w-xs">
+              {msg.text}
+            </div>
           </div>
         ))}
 
       </div>
 
       <form
-        onSubmit={handleSend}
-        className="p-4 border-t flex gap-2"
+        onSubmit={sendMessage}
+        className="bg-white border-t p-4 flex gap-2"
       >
         <input
           type="text"
@@ -77,12 +103,12 @@ const Chat = () => {
           onChange={(e) =>
             setText(e.target.value)
           }
-          className="border p-3 flex-1 rounded"
+          className="flex-1 border rounded-lg px-4 py-3"
         />
 
         <button
           type="submit"
-          className="border px-5 rounded"
+          className="border rounded-lg px-6"
         >
           Send
         </button>
