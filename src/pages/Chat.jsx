@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import api from "../services/api";
+import socket from "../socket";
 
 const Chat = () => {
   const { userId } = useParams();
   const location = useLocation();
 
-  const username =
-    location.state?.username || "User";
+  const username = location.state?.username || "User";
 
   const [messages, setMessages] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
@@ -18,10 +18,30 @@ const Chat = () => {
     getMessages();
   }, [userId]);
 
+  useEffect(() => {
+    socket.on("receive-message", (data) => {
+      setMessages((prev) => [
+        ...prev,
+        {
+          _id: Date.now(),
+          sender: userId,
+          text: data.text,
+        },
+      ]);
+    });
+
+    return () => {
+      socket.off("receive-message");
+    };
+  }, [userId]);
+
   const getProfile = async () => {
     try {
       const res = await api.get("/user/profile");
+
       setCurrentUser(res.data);
+
+      socket.emit("join", res.data._id);
     } catch (error) {
       console.log(error);
     }
@@ -29,10 +49,7 @@ const Chat = () => {
 
   const getMessages = async () => {
     try {
-      const res = await api.get(
-        `/messages/${userId}`
-      );
-
+      const res = await api.get(`/messages/${userId}`);
       setMessages(res.data);
     } catch (error) {
       console.log(error);
@@ -45,18 +62,17 @@ const Chat = () => {
     if (!text.trim()) return;
 
     try {
-      const res = await api.post(
-        "/messages/send",
-        {
-          receiver: userId,
-          text,
-        }
-      );
+      const res = await api.post("/messages/send", {
+        receiver: userId,
+        text,
+      });
 
-      setMessages((prev) => [
-        ...prev,
-        res.data,
-      ]);
+      socket.emit("send-message", {
+        receiverId: userId,
+        text,
+      });
+
+      setMessages((prev) => [...prev, res.data]);
 
       setText("");
     } catch (error) {
@@ -65,9 +81,9 @@ const Chat = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gray-100">
+    <div className="h-screen flex flex-col">
 
-      <div className="bg-white border-b p-4 shadow">
+      <div className="border-b p-4">
         <h1 className="text-xl font-bold">
           {username}
         </h1>
@@ -84,7 +100,7 @@ const Chat = () => {
                 : "justify-start"
             }`}
           >
-            <div className="bg-white border rounded-lg px-4 py-2 max-w-xs">
+            <div className="border rounded-lg px-4 py-2 max-w-xs">
               {msg.text}
             </div>
           </div>
@@ -94,21 +110,19 @@ const Chat = () => {
 
       <form
         onSubmit={sendMessage}
-        className="bg-white border-t p-4 flex gap-2"
+        className="border-t p-4 flex gap-2"
       >
         <input
           type="text"
           placeholder="Type a message..."
           value={text}
-          onChange={(e) =>
-            setText(e.target.value)
-          }
-          className="flex-1 border rounded-lg px-4 py-3"
+          onChange={(e) => setText(e.target.value)}
+          className="flex-1 border rounded px-4 py-2"
         />
 
         <button
           type="submit"
-          className="border rounded-lg px-6"
+          className="border px-5 rounded"
         >
           Send
         </button>
