@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
+import socket from "../socket";
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -17,6 +18,9 @@ const Home = () => {
     try {
       const res = await api.get("/user/profile");
       setCurrentUser(res.data);
+
+      socket.emit("join", res.data._id);
+
     } catch (error) {
       console.log(error);
     }
@@ -30,6 +34,7 @@ const Home = () => {
       console.log(error);
     }
   };
+
 
   return (
     <div className="min-h-screen bg-gray-100">
