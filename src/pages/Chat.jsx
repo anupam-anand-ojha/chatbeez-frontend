@@ -18,22 +18,23 @@ const Chat = () => {
     getMessages();
   }, [userId]);
 
-  useEffect(() => {
-    socket.on("receive-message", (data) => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          _id: Date.now(),
-          sender: userId,
-          text: data.text,
-        },
-      ]);
-    });
+ useEffect(() => {
+  socket.on("receive-message", (data) => {
+    setMessages((prev) => [
+      ...prev,
+      {
+        _id: Date.now(),
+        sender: data.sender,
+        receiver: data.receiver,
+        text: data.text,
+      },
+    ]);
+  });
 
-    return () => {
-      socket.off("receive-message");
-    };
-  }, [userId]);
+  return () => {
+    socket.off("receive-message");
+  };
+}, []);
 
   const getProfile = async () => {
     try {
@@ -67,10 +68,11 @@ const Chat = () => {
         text,
       });
 
-      socket.emit("send-message", {
-        receiverId: userId,
-        text,
-      });
+     socket.emit("send-message", {
+     sender: currentUser._id,
+     receiver: userId,
+     text,
+    });
 
       setMessages((prev) => [...prev, res.data]);
 
@@ -89,24 +91,28 @@ const Chat = () => {
         </h1>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4">
-
-        {messages.map((msg) => (
-          <div
-            key={msg._id}
-            className={`flex mb-3 ${
-              msg.sender === currentUser?._id
-                ? "justify-end"
-                : "justify-start"
-            }`}
-          >
-            <div className="border rounded-lg px-4 py-2 max-w-xs">
-              {msg.text}
-            </div>
-          </div>
-        ))}
-
+      <div className="flex-1 overflow-y-auto p-4 bg-gray-100">
+       {messages.map((msg, index) => (
+      <div
+      key={msg._id || index}
+      className={`flex mb-3 ${
+        msg.sender?.toString() === currentUser?._id
+          ? "justify-end"
+          : "justify-start"
+      }`}
+    >
+      <div
+        className={`px-4 py-2 rounded-2xl max-w-xs break-words ${
+          msg.sender?.toString() === currentUser?._id
+            ? "bg-green-500 text-white"
+            : "bg-white border text-black"
+        }`}
+      >
+        {msg.text}
       </div>
+    </div>
+  ))}
+</div>
 
       <form
         onSubmit={sendMessage}
