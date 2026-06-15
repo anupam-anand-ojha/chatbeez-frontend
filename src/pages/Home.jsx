@@ -11,8 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     getProfile();
-    getUsers();
-  }, []);
+    getUsers();}, []);
 
   const getProfile = async () => {
     try {
@@ -21,7 +20,8 @@ const Home = () => {
 
       socket.emit("join", res.data._id);
 
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error);
     }
   };
@@ -30,7 +30,8 @@ const Home = () => {
     try {
       const res = await api.get("/user");
       setUsers(res.data);
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error);
     }
   };
@@ -56,8 +57,7 @@ const Home = () => {
             {users.map((user) => (
               <div
                 key={user._id}
-                onClick={() =>
-                  navigate(`/chat/${user._id}`, {
+                onClick={() => navigate(`/chat/${user._id}`, {
                     state: {
                       username: user.username,
                     },

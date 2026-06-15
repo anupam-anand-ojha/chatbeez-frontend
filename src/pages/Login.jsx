@@ -21,15 +21,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post(
-        "/auth/login",
-        formData
-      );
+      const response = await api.post("/auth/login",formData );
 
       console.log(response.data);
 
       navigate("/home");
-    } catch (error) {
+    } 
+    catch (error) {
       console.error(
         error.response?.data || error.message
       );
