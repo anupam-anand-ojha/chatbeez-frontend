@@ -22,18 +22,14 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post(
-        "/auth/register",
-        formData
-      );
+      const response = await api.post( "/auth/register",formData );
 
       console.log(response.data);
 
       navigate("/");
-    } catch (error) {
-      console.error(
-        error.response?.data || error.message
-      );
+    } 
+    catch (error) {
+      console.error(error.response?.data || error.message );
     }
   };
 
