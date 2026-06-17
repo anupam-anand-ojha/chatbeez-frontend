@@ -40,7 +40,7 @@ const Register = () => {
         className="w-[400px] border p-6 rounded-lg"
       >
         <h1 className="text-3xl font-bold mb-6">
-          Register
+          Register user 
         </h1>
 
         <input
