@@ -40,7 +40,7 @@ const Login = () => {
         onSubmit={handleSubmit}
         className="w-[400px] border p-6 rounded-lg"
       >
-        <h1 className="text-3xl font-bold mb-6">
+        <h1 className="text-2xl font-bold mb-8">
           Login
         </h1>
 
