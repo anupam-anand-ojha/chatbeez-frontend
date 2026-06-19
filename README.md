@@ -1,16 +1,102 @@
-# React + Vite
+# ChatBeez
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time chat application built with Socket.IO that enables instant messaging between users with a modern and responsive interface.It provides a responsive and intuitive chat experience while seamlessly communicating with the backend APIs and Socket.IO server.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This application enables users to:
 
-## React Compiler
+* Register and log in securely
+* Access real-time messaging functionality
+* View conversations instantly without page refreshes
+* Maintain authenticated sessions
+* Experience a responsive interface across devices
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technology Stack
 
-## Expanding the ESLint configuration
+* React.js
+* Vite
+* Tailwind CSS
+* Axios
+* Socket.IO Client
+* React Router DOM
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+* User Authentication
+* Protected Routes
+* Real-Time Messaging
+* Persistent Sessions
+* Responsive User Interface
+* API Integration
+* Socket.IO Integration
+
+## Installation
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/chatbeez-frontend.git
+cd chatbeez-frontend
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Configure Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```bash
+src/
+├── components/
+├── pages/
+├── context/
+├── socket/
+├── services/
+├── assets/
+└── App.jsx
+```
+
+## Backend Repository
+
+The frontend communicates with the ChatBeez Backend through REST APIs and Socket.IO connections.
+
+Backend technologies include:
+
+* Node.js
+* Express.js
+* MongoDB
+* Socket.IO
+* JWT Authentication
+
+## Deployment
+
+The application can be deployed on platforms such as Vercel.
+
+Production environment variables should be configured before deployment.
+
+## Author
+
+Anand Anupam
