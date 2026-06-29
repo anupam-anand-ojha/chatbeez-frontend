@@ -40,7 +40,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-red-100">
 
-      <div className="max-w-4xl mx-auto p-5">
+      <div className="max-w-3xl mx-auto p-5">
 
         <div className="bg-white rounded-lg shadow p-4 mb-5">
           <h1 className="text-2xl font-bold">
