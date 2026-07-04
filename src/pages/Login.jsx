@@ -21,59 +21,76 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post("/auth/login",formData );
+      const response = await api.post("/auth/login", formData);
 
       console.log(response.data);
-
       navigate("/home");
-    } 
-    catch (error) {
-      console.error(
-        error.response?.data || error.message
-      );
+    } catch (error) {
+      console.error(error.response?.data || error.message);
     }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <form
-        onSubmit={handleSubmit}
-        className="w-[400px] border p-6 rounded-lg"
-      >
-        <h1 className="text-2xl font-bold mb-8">
-          Login
-        </h1>
+    <div className="hero bg-base-200 min-h-screen">
+      <div className="hero-content flex-col lg:flex-row-reverse gap-10">
+        {/* Left Content */}
+        <div className="text-center lg:text-left">
+          <h1 className="text-5xl font-bold">Welcome Back!</h1>
+          <p className="py-6 max-w-md">
+            Login to continue accessing your account and explore all the
+            features available for you.
+          </p>
+        </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="border p-3 w-full mb-4"
-        />
+        {/* Login Card */}
+        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <form onSubmit={handleSubmit} className="card-body">
+            <fieldset className="fieldset">
+              <label className="label">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                className="input w-full"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          className="border p-3 w-full mb-4"
-        />
+              <label className="label mt-2">Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                className="input w-full"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
 
-        <button
-          type="submit"
-          className="border p-3 w-full"
-        >
-          Login
-        </button>
+              <div className="mt-2">
+                <a className="link link-hover text-sm">
+                  Forgot password?
+                </a>
+              </div>
 
-        <p className="mt-4">
-          Don't have an account?{" "}
-          <Link to="/register">Register</Link>
-        </p>
-      </form>
+              <button type="submit" className="btn btn-neutral mt-4 w-full">
+                Login
+              </button>
+
+              <p className="text-center mt-4 text-sm">
+                Don't have an account?{" "}
+                <Link
+                  to="/register"
+                  className="link link-primary font-medium"
+                >
+                  Register
+                </Link>
+              </p>
+            </fieldset>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
