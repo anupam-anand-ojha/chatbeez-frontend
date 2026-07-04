@@ -77,7 +77,7 @@ src/
 ├── services/
 ├── assets/
 └── App.jsx
-```
+
 
 ## Backend Repository
 
