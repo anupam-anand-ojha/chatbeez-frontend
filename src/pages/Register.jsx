@@ -26,7 +26,8 @@ const Register = () => {
 
       console.log(response.data);
       navigate("/");
-    } catch (error) {
+    } 
+    catch (error) {
       console.error(error.response?.data || error.message);
     }
   };
@@ -88,6 +89,7 @@ const Register = () => {
                   className="link link-primary font-medium"
                 >
                   Login
+
                 </Link>
               </p>
             </fieldset>
