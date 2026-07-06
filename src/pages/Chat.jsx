@@ -77,7 +77,8 @@ const Chat = () => {
       setMessages((prev) => [...prev, res.data]);
 
       setText("");
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error);
     }
   };
