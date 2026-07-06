@@ -115,7 +115,7 @@ const Chat = () => {
 
               <div
                 className={`chat-bubble ${
-                  isMe ? "chat-bubble-primary" : "chat-bubble-neutral"
+                  isMe ? "chat-bubble-success text-white" : "chat-bubble-neutral"
                 }`}
               >
                 {msg.text}
