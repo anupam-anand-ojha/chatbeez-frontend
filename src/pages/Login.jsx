@@ -35,7 +35,7 @@ const Login = () => {
       <div className="hero-content">
 
         {/* Login Card */}
-        <div className="card bg-base-100 w-[450px] min-h-[400px] shadow-2xl rounded-2xll">
+        <div className="card aura aura-dual bg-base-100 w-[450px] min-h-[400px] shadow-2xl rounded-2xll">
           <form onSubmit={handleSubmit} className="card-body">
             <fieldset className="fieldset">
               <label className="label">Email</label>
