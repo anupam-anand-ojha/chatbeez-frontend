@@ -11,7 +11,8 @@ const Home = () => {
 
   useEffect(() => {
     getProfile();
-    getUsers();}, []);
+    getUsers();
+  }, []);
 
   const getProfile = async () => {
     try {
@@ -19,9 +20,7 @@ const Home = () => {
       setCurrentUser(res.data);
 
       socket.emit("join", res.data._id);
-
-    } 
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -30,55 +29,55 @@ const Home = () => {
     try {
       const res = await api.get("/user");
       setUsers(res.data);
-    } 
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   };
 
-
   return (
-    <div className="min-h-screen bg-red-100">
+    <div className="min-h-screen bg-base-200 py-10">
+      <div className="max-w-3xl mx-auto px-4">
 
-      <div className="max-w-3xl mx-auto p-5">
-
-        <div className="bg-white rounded-lg shadow p-4 mb-5">
-          <h1 className="text-2xl font-bold">
-            Welcome {currentUser?.username}
-          </h1>
+        {/* Welcome Card */}
+        <div className="card bg-base-100 shadow-md mb-6">
+          <div className="card-body">
+            <h1 className="text-2xl font-bold">
+              Welcome {currentUser?.username}
+            </h1>
+          </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-4">
-          <h2 className="text-xl font-semibold mb-4">
-            Users
-          </h2>
+        {/* User List */}
+        <div className="card bg-base-100 shadow-md">
+          <div className="card-body">
+            <h2 className="card-title mb-3">Users</h2>
 
-          <div className="space-y-3">
-            {users.map((user) => (
-              <div
-                key={user._id}
-                onClick={() => navigate(`/chat/${user._id}`, {
-                    state: {
-                      username: user.username,
-                    },
-                  })
-                }
-                className="border rounded-lg p-4 cursor-pointer hover:bg-gray-50"
-              >
-                <h3 className="font-semibold">
-                  {user.username}
-                </h3>
+            <ul className="menu bg-base-100 rounded-box w-full">
+              {users.map((user) => (
+                <li key={user._id}>
+                  <a
+                    onClick={() =>
+                      navigate(`/chat/${user._id}`, {
+                        state: {
+                          username: user.username,
+                        },
+                      })
+                    }
+                    className="py-3"
+                  >
+                    <div>
+                      <p className="font-semibold">{user.username}</p>
+                      <p className="text-sm opacity-60">{user.email}</p>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
 
-                <p className="text-sm text-gray-500">
-                  {user.email}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
 
       </div>
-
     </div>
   );
 };
