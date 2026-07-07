@@ -69,7 +69,7 @@ const Home = () => {
                 >
                   {/* Avatar */}
                   {/* <div className="avatar placeholder"> */}
-                    <div className="bg-primary text-primary-content rounded-full w-12 ">
+                    <div className="w-12 h-12 rounded-full bg-primary text-primary-content flex items-center justify-center shrink-0">
                       <span className="text-lg font-semibold">
                         {user.username.charAt(0).toUpperCase()}
                       </span>
