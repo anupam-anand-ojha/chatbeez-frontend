@@ -37,18 +37,22 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-base-200 py-8">
       <div className="max-w-3xl mx-auto px-4">
-        {/* Welcome */}
-        <div className="card bg-base-100 shadow-md mb-6">
-          <div className="card-body">
-            <h1 className="text-3xl font-bold">
-              Welcome, {currentUser?.username}
-            </h1>
-            <p className="text-sm opacity-70">
-              Select a user to start chatting.
-            </p>
-          </div>
-        </div>
+ {/* Welcome */}
+<div className="card bg-base-100 shadow-md mb-6">
+  <div className="card-body">
+    <p className="text-sm uppercase tracking-widest text-primary font-semibold">
+      ChatBeez
+    </p>
 
+    <h1 className="text-3xl font-bold mt-1">
+      Welcome {currentUser?.username} 
+    </h1>
+
+    <p className="text-base-content/70 mt-2">
+      Choose a conversation below and start chatting instantly.
+    </p>
+  </div>
+</div>
         {/* Users */}
         <div className="card bg-base-100 shadow-md">
           <div className="card-body">
