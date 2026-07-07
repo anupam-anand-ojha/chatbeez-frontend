@@ -40,7 +40,7 @@ const Home = () => {
  {/* Welcome */}
 <div className="card bg-base-100 shadow-md mb-6">
   <div className="card-body">
-    <p className="text-sm uppercase tracking-widest text-primary font-semibold">
+    <p className="text-sm uppercase tracking-widest text-yellow font-semibold">
       ChatBeez
     </p>
 
