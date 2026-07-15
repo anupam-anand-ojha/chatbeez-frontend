@@ -73,7 +73,9 @@ const Home = () => {
         {/* Users */}
         <div className="card bg-base-100 shadow-md">
           <div className="card-body">
-            <h2 className="card-title mb-4">Users</h2>
+            <h2 className="card-title text-warning text-2xl"> Hive Members </h2>
+
+            <div className="divider text-warning"> 🐝 START BUZZING 🐝 </div>
 
             <ul className="list bg-base-100 rounded-box">
               {users.map((user) => (
@@ -90,7 +92,7 @@ const Home = () => {
                 >
                   {/* Avatar */}
                   {/* <div className="avatar placeholder"> */}
-                    <div className="w-12 h-12 rounded-full bg-primary text-primary-content flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-warning text-warning-content flex items-center justify-center shrink-0">
                       <span className="text-lg font-semibold">
                         {user.username.charAt(0).toUpperCase()}
                       </span>
