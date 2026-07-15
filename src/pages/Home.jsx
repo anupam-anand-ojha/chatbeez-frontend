@@ -37,22 +37,39 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-base-200 py-8">
       <div className="max-w-3xl mx-auto px-4">
- {/* Welcome */}
-<div className="card bg-base-100 shadow-md mb-6">
-  <div className="card-body">
-    <p className="text-sm uppercase tracking-widest text-yellow font-semibold">
-      ChatBeez
-    </p>
+     {/* Welcome */}
+      <div className="hero rounded-3xl bg-neutral text-neutral-content shadow-2xl border border-warning mb-8 overflow-hidden">
+          <div className="hero-content text-center py-14">
+            <div>
+              <div className="badge badge-warning badge-lg font-semibold mb-5">
+                🐝 CHATBEEZ
+              </div>
 
-    <h1 className="text-3xl font-bold mt-1">
-      Welcome {currentUser?.username} 
-    </h1>
+              <h1 className="text-4xl md:text-5xl font-bold">
+                Welcome {currentUser?.username}
+              </h1>
 
-    <p className="text-base-content/70 mt-2">
-      Choose a conversation below and start chatting instantly.
-    </p>
-  </div>
-</div>
+              <p className="py-4 opacity-80 max-w-xl">
+                Welcome to the Hive. Pick a bee buddy and start
+                buzzing instantly with seamless real-time chats.
+              </p>
+
+              <div className="flex justify-center gap-2 flex-wrap">
+                <div className="badge badge-warning badge-outline">
+                  Real-Time Chat
+                </div>
+
+                <div className="badge badge-warning badge-outline">
+                  Secure Messaging
+                </div>
+
+                <div className="badge badge-warning badge-outline">
+                  Lightning Fast
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Users */}
         <div className="card bg-base-100 shadow-md">
           <div className="card-body">
