@@ -43,9 +43,9 @@ const Login = () => {
             <div className="text-center mb-4">
               <div className="text-5xl mb-2">🐝</div>
 
-              <h1 className="text-4xl font-black bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-300 bg-clip-text text-transparent">
-                ChatBeez
-              </h1>
+              <h1 className="text-4xl font-black">
+               Chat<span className="text-warning">Beez</span>
+            </h1>
 
               <p className="text-sm text-base-content/70 mt-2">
                 Welcome back to the Hive
