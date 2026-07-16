@@ -35,7 +35,7 @@ const Login = () => {
       <div className="hero-content w-full">
 
         {/* Login Card */}
-        <div className="card aura aura-dual bg-base-100 w-full max-w-md shadow-2xl rounded-3xl border border-base-300">
+        <div className="card aura aura-warning bg-base-100 w-full max-w-md shadow-2xl rounded-3xl border border-base-300">
 
           <form onSubmit={handleSubmit} className="card-body">
 
@@ -99,7 +99,7 @@ const Login = () => {
                 Don't have an account?{" "}
                 <Link
                   to="/register"
-                  className="link link-warning font-semibold"
+                  className="link link-warning font-semibold "
                 >
                   Join the Hive
                 </Link>
