@@ -31,54 +31,80 @@ const Login = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen ">
-      <div className="hero-content">
+    <div className="hero min-h-screen bg-base-200 px-4">
+      <div className="hero-content w-full">
 
         {/* Login Card */}
-        <div className="card aura aura-dual bg-base-100 w-[450px] min-h-[400px] shadow-2xl rounded-2xll">
+        <div className="card aura aura-dual bg-base-100 w-full max-w-md shadow-2xl rounded-3xl border border-base-300">
+
           <form onSubmit={handleSubmit} className="card-body">
+
+            {/* Heading */}
+            <div className="text-center mb-4">
+              <div className="text-5xl mb-2">🐝</div>
+
+              <h1 className="text-4xl font-black bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-300 bg-clip-text text-transparent">
+                ChatBeez
+              </h1>
+
+              <p className="text-sm text-base-content/70 mt-2">
+                Welcome back to the Hive
+              </p>
+            </div>
+
             <fieldset className="fieldset">
-              <label className="label">Email</label>
+
+              <label className="label font-medium">
+                Email
+              </label>
+
               <input
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                className="input w-full"
+                className="input input-bordered w-full rounded-xl"
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
 
-              <label className="label mt-2">Password</label>
+              <label className="label font-medium mt-2">
+                Password
+              </label>
+
               <input
                 type="password"
                 name="password"
                 placeholder="Enter your password"
-                className="input w-full"
+                className="input input-bordered w-full rounded-xl"
                 value={formData.password}
                 onChange={handleChange}
                 required
               />
 
-              <div className="mt-2">
-                <a className="link link-hover text-sm">
+              <div className="mt-2 flex justify-end">
+                <a className="link link-hover text-sm text-warning">
                   Forgot password?
                 </a>
               </div>
 
-              <button type="submit" className="btn btn-neutral mt-4 w-full">
-                Login
+              <button
+                type="submit"
+                className="btn btn-warning mt-5 w-full rounded-xl text-black font-bold"
+              >
+                Login to Hive
               </button>
 
-              <p className="text-center mt-4 text-sm">
+              <p className="text-center mt-5 text-sm text-base-content/70">
                 Don't have an account?{" "}
                 <Link
                   to="/register"
-                  className="link link-primary font-medium"
+                  className="link link-warning font-semibold"
                 >
-                  Register
+                  Join the Hive
                 </Link>
               </p>
+
             </fieldset>
           </form>
         </div>
