@@ -88,7 +88,7 @@ const Home = () => {
                       },
                     })
                   }
-                  className="list-row cursor-pointer hover:bg-base-200 transition-colors"
+               className="list-row cursor-pointer rounded-xl hover:bg-[#FFE082] hover:shadow-md transition-all duration-100"
                 >
                   {/* Avatar */}
                   {/* <div className="avatar placeholder"> */}
