@@ -26,50 +26,72 @@ const Register = () => {
 
       console.log(response.data);
       navigate("/");
-    } 
-    catch (error) {
+    } catch (error) {
       console.error(error.response?.data || error.message);
     }
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content">
-        <div className="card bg-base-100 w-[450px] shadow-2xl rounded-2xl">
-          <form onSubmit={handleSubmit} className="card-body p-8">
-            <h2 className="text-3xl font-bold text-center mb-4">
-              Create Account
-            </h2>
+    <div className="hero min-h-screen bg-base-200 px-4">
+      <div className="hero-content w-full">
+
+        {/* Register Card */}
+        <div className="card bg-base-100 w-full max-w-md shadow-2xl rounded-3xl border border-base-300">
+
+          <form onSubmit={handleSubmit} className="card-body">
+
+            {/* Heading */}
+            <div className="text-center mb-4">
+              <div className="text-5xl mb-2">🐝</div>
+
+              <h1 className="text-4xl font-black">
+                Chat<span className="text-warning">Beez</span>
+              </h1>
+
+              <p className="text-sm text-base-content/70 mt-2">
+                Join the Hive and start buzzing
+              </p>
+            </div>
 
             <fieldset className="fieldset">
-              <label className="label">Username</label>
+
+              <label className="label font-medium">
+                Username
+              </label>
+
               <input
                 type="text"
                 name="username"
                 placeholder="Enter your username"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full rounded-xl"
                 value={formData.username}
                 onChange={handleChange}
                 required
               />
 
-              <label className="label mt-4">Email</label>
+              <label className="label font-medium mt-2">
+                Email
+              </label>
+
               <input
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full rounded-xl"
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
 
-              <label className="label mt-4">Password</label>
+              <label className="label font-medium mt-2">
+                Password
+              </label>
+
               <input
                 type="password"
                 name="password"
                 placeholder="Enter your password"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full rounded-xl"
                 value={formData.password}
                 onChange={handleChange}
                 required
@@ -77,21 +99,21 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="btn btn-neutral w-full mt-6"
+                className="btn btn-warning mt-5 w-full rounded-xl text-black font-bold"
               >
-                Register
+                Join the Hive
               </button>
 
-              <p className="text-center mt-5 text-sm">
+              <p className="text-center mt-5 text-sm text-base-content/70">
                 Already have an account?{" "}
                 <Link
                   to="/"
-                  className="link link-primary font-medium"
+                  className="link link-warning font-semibold"
                 >
                   Login
-
                 </Link>
               </p>
+
             </fieldset>
           </form>
         </div>
