@@ -36,7 +36,7 @@ const Register = () => {
       <div className="hero-content w-full">
 
         {/* Register Card */}
-        <div className="card bg-base-100 w-full max-w-md shadow-2xl rounded-3xl border border-base-300">
+        <div className="card aura aura-gold bg-base-100 w-full max-w-md shadow-2xl rounded-3xl border border-base-300">
 
           <form onSubmit={handleSubmit} className="card-body">
 
