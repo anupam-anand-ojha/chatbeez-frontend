@@ -8,18 +8,16 @@
 @plugin "@tailwindcss/typography";
 
 body{
-  background-image:
-url("https://t3.ftcdn.net/jpg/20/07/46/98/240_F_2007469846_TtTAx4xg4sxTepHR1hmXECBI6FQ02kQO.jpg"),
+  background-image:url("/bg2.jpg"), 
+
 linear-gradient(
 135deg,
-#fff9eb,
-#ffd54f,
-#ffc107
+    #fffefb 0%,
+    #fcf8ec 35%,
+    #f8efcf 70%,
+    #f2dfa0 100%
 );
 
-background-repeat:no-repeat;
+  background-size: cover;
 
-
-background-size:
-cover;
 }

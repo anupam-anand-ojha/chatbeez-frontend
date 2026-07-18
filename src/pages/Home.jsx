@@ -35,7 +35,11 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-200 py-8">
+
+    
+    <div className="min-h-screen bg-transparent py-8 bg-fixed"
+         style={{ backgroundImage: "url('/bg2.jpg')" }}>
+
       <div className="max-w-3xl mx-auto px-4">
      {/* Welcome */}
       <div className="hero rounded-3xl bg-neutral text-neutral-content shadow-2xl border border-warning mb-8 overflow-hidden">
