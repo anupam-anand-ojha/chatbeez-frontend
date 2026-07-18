@@ -36,7 +36,9 @@ const Register = () => {
       <div className="hero-content w-full">
 
         {/* Register Card */}
-        <div className="card aura aura-gold bg-base-100 w-full max-w-md shadow-2xl rounded-3xl border border-base-300">
+        <div className="aura aura-gold w-full max-w-md rounded-3xl">
+
+        <div className="card bg-base-100 w-full max-w-md shadow-2xl rounded-3xl ">
 
           <form onSubmit={handleSubmit} className="card-body">
 
@@ -117,6 +119,7 @@ const Register = () => {
             </fieldset>
           </form>
         </div>
+      </div>
       </div>
     </div>
   );
