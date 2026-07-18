@@ -36,7 +36,7 @@ const Register = () => {
       <div className="hero-content w-full">
 
         {/* Register Card */}
-        <div className="aura aura-gold w-full max-w-md rounded-3xl">
+        <div className="aura aura-xs bg-yellow-500 3xl w-full max-w-md rounded-3xl">
 
         <div className="card bg-base-100 w-full max-w-md shadow-2xl rounded-3xl ">
 

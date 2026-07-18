@@ -31,11 +31,11 @@ const Login = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200 px-4">
+    <div className="hero min-h-screen bg-white/5 px-4">
       <div className="hero-content w-full">
 
         {/* Login Card */}
-        <div className="card aura aura-glow bg-base-100 w-full max-w-md shadow-2xl rounded-3xl border border-base-300">
+        <div className="card bg-base-100 w-full max-w-md shadow-2xl rounded-3xl border border-base-300">
 
           <form onSubmit={handleSubmit} className="card-body">
 
