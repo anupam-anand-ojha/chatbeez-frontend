@@ -32,7 +32,7 @@ const Register = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200 px-4">
+    <div className="hero min-h-screen bg-base-transparent px-4">
       <div className="hero-content w-full">
 
         {/* Register Card */}
