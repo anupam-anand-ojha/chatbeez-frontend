@@ -37,7 +37,7 @@ const Home = () => {
   return (
 
     
-    <div className="min-h-screen bg-transparent py-8 bg-fixed"
+    <div className="min-h-screen bg-transparent bg-no repeat py-8 bg-fixed"
          style={{ backgroundImage: "url('/bg2.jpg')" }}>
 
       <div className="max-w-3xl mx-auto px-4">
