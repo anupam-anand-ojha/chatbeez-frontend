@@ -82,72 +82,140 @@ const Chat = () => {
     }
   };
 
-  return (
-    <div className="h-screen flex flex-col bg-base-100">
-      {/* Header */}
-      <div className="navbar bg-base-200 border-b">
-        <div className="flex-1 px-4">
-          <h1 className="text-lg font-semibold">{username}</h1>
+ return (
+  <div className="h-screen flex flex-col bg-base-100">
+
+    {/* Header */}
+    <div className="navbar bg-base-200 border-b border-warning/20 shadow-sm px-4">
+      <div className="flex items-center gap-3">
+
+        <div>
+          <h1 className="text-xl font-bold">
+            🐝 {username}
+          </h1>
+
+          <p className="text-xs text-warning">
+            Buzzing in the Hive...
+          </p>
         </div>
+
       </div>
-
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 bg-base-100">
-        {messages.map((msg, index) => {
-          const isMe = msg.sender?.toString() === currentUser?._id;
-
-          return (
-            <div
-              key={msg._id || index}
-              className={`chat ${isMe ? "chat-end" : "chat-start"}`}
-            >
-              <div className="chat-header">
-                {isMe ? "You" : username}
-                <time className="text-xs opacity-50 ml-2">
-                  {msg.createdAt
-                    ? new Date(msg.createdAt).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })
-                    : ""}
-                </time>
-              </div>
-
-              <div
-                className={`chat-bubble ${
-                  isMe ? "chat-bubble-success text-black" : "chat-bubble-#202C33 text-#E9EDEF"
-                }`}
-              >
-                {msg.text}
-              </div>
-
-              <div className="chat-footer opacity-50">
-                {isMe ? "Sent" : "Received"}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Input */}
-      <form
-        onSubmit={sendMessage}
-        className="p-4 border-t bg-base-200 flex gap-2"
-      >
-        <input
-          type="text"
-          placeholder="Type a message..."
-          className="input input-bordered flex-1"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-
-        <button type="submit" className="btn btn-primary">
-          Send
-        </button>
-      </form>
     </div>
-  );
+
+    {/* Messages */}
+    <div
+      className="
+      flex-1
+      overflow-y-auto
+      p-5
+      bg-gradient-to-b
+      from-yellow-50/40
+      via-base-100
+      to-yellow-100/30
+      "
+    >
+      {messages.map((msg, index) => {
+
+        const isMe =
+          msg.sender?.toString() === currentUser?._id;
+
+        return (
+
+          <div
+            key={msg._id || index}
+            className={`chat ${
+              isMe ? "chat-end" : "chat-start"
+            }`}
+          >
+            {/*for username on top of chat bubble }
+            
+            {/* <div className="chat-header mb-1 text-xs">
+
+              {isMe ? "" : username}
+            </div> */}
+
+            <div
+              className={`chat-bubble shadow-lg rounded-3xl ${
+                isMe
+                  ? "bg-warning text-black"
+                  : "bg-base-200 border border-warning/20"
+              }`}
+            >
+              {msg.text}
+            </div>
+
+            <div className="chat-footer text-xs opacity-60 mt-1">
+              {isMe
+                ? "🐝 Delivered"
+                : "🍯 Received"}
+
+                <time className="text-xs opacity-50 ml-2">
+
+                {msg.createdAt
+                  ? new Date(
+                      msg.createdAt
+                    ).toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })
+                  : ""}
+
+              </time>
+            </div>
+
+          </div>
+
+        );
+      })}
+    </div>
+
+    {/* Input */}
+    <form
+      onSubmit={sendMessage}
+      className="
+      p-4
+      border-t
+      border-warning/20
+      bg-base-200
+      flex
+      gap-3
+      "
+    >
+
+      <input
+        type="text"
+        placeholder="Type your sweet message..."
+        className="
+        input
+        input-bordered
+        rounded-2xl
+        flex-1
+        focus:border-warning
+        "
+        value={text}
+        onChange={(e) =>
+          setText(e.target.value)
+        }
+      />
+
+      <button
+        type="submit"
+        className="
+        btn
+        btn-warning
+        rounded-2xl
+        font-bold
+        text-black
+        px-6
+        "
+      >
+        🍯 Send
+      </button>
+
+    </form>
+
+  </div>
+);
 };
 
 export default Chat;
