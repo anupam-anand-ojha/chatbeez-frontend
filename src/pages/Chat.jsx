@@ -134,34 +134,24 @@ const Chat = () => {
               {isMe ? "" : username}
             </div> */}
 
-            <div
-              className={`chat-bubble shadow-lg rounded-3xl ${
-                isMe
-                  ? "bg-warning text-black"
-                  : "bg-base-200 border border-warning/20"
-              }`}
-            >
-              {msg.text}
-            </div>
-
-            <div className="chat-footer text-xs opacity-60 mt-1">
-              {isMe
-                ? "🐝 sent"
-                : "🍯 Received"}
-
-                <time className="text-xs opacity-50 ml-2">
-
-                {msg.createdAt
-                  ? new Date(
-                      msg.createdAt
-                    ).toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })
-                  : ""}
-
-              </time>
-            </div>
+          <div
+  className={`chat-bubble shadow-lg rounded-3xl ${
+    isMe
+      ? "bg-warning text-black"
+      : "bg-base-200 border border-warning/20"
+  }`}
+>
+  <p>{msg.text}</p>
+  <p className="text-[8px] text-right opacity-70 mt-2">
+    {msg.createdAt
+      ? new Date(msg.createdAt).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      : ""}
+    {isMe && " ✓"}
+  </p>
+</div>
 
           </div>
 
