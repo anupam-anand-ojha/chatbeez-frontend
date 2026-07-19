@@ -135,7 +135,7 @@ const Chat = () => {
             </div> */}
 
           <div
-  className={`chat-bubble shadow-lg rounded-3xl ${
+  className={`chat-bubble shadow-lg max-w-[80%] md:max-w-[70%] rounded-3xl ${
     isMe
       ? "bg-warning text-black"
       : "bg-base-200 border border-warning/20"
