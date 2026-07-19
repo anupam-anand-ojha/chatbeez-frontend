@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import api from "../services/api";
 import socket from "../socket";
 
 const Chat = () => {
   const { userId } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const username = location.state?.username || "User";
 
@@ -99,12 +100,16 @@ const Chat = () => {
   return (
     <div className="h-screen flex flex-col bg-base-100">
       {/* Header */}
-      <div className="navbar bg-base-200 border-b border-warning/20 shadow-sm px-4">
+      <div className="navbar bg-base-200 border-b border-warning/20 shadow-sm px-0">
         <div className="flex items-center gap-3">
+           <button
+      onClick={() => navigate(-1)}
+      className="btn btn-ghost btn-circle text-xl"
+    >
+       ❮
+    </button>
           <div>
-            <h1 className="text-xl font-bold">
-      🐝 {username}
-    </h1>
+            <h1 className="text-xl font-bold"> {username} 🐝  </h1>
 
     <p
       className={`text-xs font-medium ${
