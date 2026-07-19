@@ -128,7 +128,7 @@ const Chat = () => {
             }`}
           >
             {/*for username on top of chat bubble }
-            
+
             {/* <div className="chat-header mb-1 text-xs">
 
               {isMe ? "" : username}
@@ -146,7 +146,7 @@ const Chat = () => {
 
             <div className="chat-footer text-xs opacity-60 mt-1">
               {isMe
-                ? "🐝 Delivered"
+                ? "🐝 sent"
                 : "🍯 Received"}
 
                 <time className="text-xs opacity-50 ml-2">
