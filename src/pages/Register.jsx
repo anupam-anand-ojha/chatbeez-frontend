@@ -24,7 +24,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      IsRegistering(true);
+      setIsRegistering(true);
 
       const response = await api.post("/auth/register", formData);
 
@@ -39,7 +39,7 @@ const Register = () => {
 
   return (
     <>
-      {isRegistering && (
+      {IsRegistering && (
         <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center">
           <div className="text-7xl animate-bounce">🐝</div>
 
