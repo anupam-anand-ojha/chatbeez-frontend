@@ -43,11 +43,11 @@ const Register = () => {
         <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center">
           <div className="text-7xl animate-bounce">🐝</div>
 
-          <h1 className="text-4xl font-black mt-5">
+          <h1 className="text-4xl font-white mt-5">
             Creating Your <span className="text-warning">Hive</span>
           </h1>
 
-          <p className="text-base-content/70 mt-2">Warming up our servers...</p>
+          <p className="text-white/70 mt-2 animate-pulse">Warming up our servers...</p>
 
           <span className="loading loading-dots loading-lg text-warning mt-4"></span>
         </div>
