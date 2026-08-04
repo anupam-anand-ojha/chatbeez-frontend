@@ -28,8 +28,11 @@ const Register = () => {
 
       const response = await api.post("/auth/register", formData);
 
+      localStorage.setItem("token", response.data.token);
+
       console.log(response.data);
-      navigate("/");
+
+      navigate("/home");
     } catch (error) {
       console.error(error.response?.data || error.message);
     } finally {
@@ -47,7 +50,9 @@ const Register = () => {
             Creating Your <span className="text-warning">Hive</span>
           </h1>
 
-          <p className="text-white/70 mt-2 animate-pulse">Warming up our servers...</p>
+          <p className="text-white/70 mt-2 animate-pulse">
+            Warming up our servers...
+          </p>
 
           <span className="loading loading-dots loading-lg text-warning mt-4"></span>
         </div>

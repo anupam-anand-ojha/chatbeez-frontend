@@ -24,9 +24,13 @@ const Login = () => {
 
     try {
       setIsLoggingIn(true);
+
       const response = await api.post("/auth/login", formData);
 
+      localStorage.setItem("token", response.data.token);
+
       console.log(response.data);
+
       navigate("/home");
     } catch (error) {
       console.error(error.response?.data || error.message);
@@ -34,7 +38,6 @@ const Login = () => {
       setIsLoggingIn(false);
     }
   };
-
   return (
     <>
       {IsLoggingIn && (
