@@ -44,7 +44,7 @@ const Login = () => {
         <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center">
           <div className="text-8xl animate-bounce">🍯</div>
 
-          <h1 className="text-4xl font-black text-white mt-6">
+          <h1 className="text-3xl lg:text-4xl font-black text-white mt-6">
             Reconnect with <span className="text-warning">Your Colony</span>
           </h1>
 
